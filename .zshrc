@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export TERM="xterm-256color"
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/ryanbarnett/.oh-my-zsh
+export ZSH=/Users/faust/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -12,6 +12,13 @@ ZSH_THEME="squirrelbook"
 # Disable dir/git icons
 DISABLE_AUTO_TITLE="true"
 
+# Load the shell dotfiles, and then some:
+# * ~/.mix-path can be used to extend `$PATH`.
+# * ~/.mix-extra can be used for other settings you don’t want to commit to your repo.
+for file in ~/.zsh/{path,exports,aliases,functions,local}; do
+	[ -r "$file" ] && source "$file"
+done
+unset file
 
 export DEFAULT_USER="$USER"
 # Uncomment the following line to use case-sensitive completion.
@@ -56,9 +63,11 @@ export DEFAULT_USER="$USER"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(sudo git history taskwarrior tmux tmuxinator zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
