@@ -1,0 +1,7 @@
+{
+    "editor.renderIndentGuides": false,
+    "workbench.colorTheme": "One Dark Pro",
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "editor.formatOnPaste": true
+}
