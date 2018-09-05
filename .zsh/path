@@ -1,3 +1,0 @@
-# --- PATH ------------------------------------
-# Customize to your needs...
-export PATH=/usr/local/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin # all bins
