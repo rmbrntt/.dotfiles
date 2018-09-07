@@ -1,46 +1,25 @@
 #!/bin/sh
-# Executed by startx
-# By calling this with arguments we can start different sessions
-# eg. startx ~/.xinitrc i3  or  startx ~/.xinitrc bspwm
-# simply using startx, openbox is set as the default
 
-session=${1:-openbox}
-export WM="$session"
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
 
-if [ -f /etc/X11/xinit/.Xmodmap ]; then
-    xmodmap /etc/X11/xinit/.Xmodmap
+# merge in defaults and keymaps
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
 fi
 
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-    for f in /etc/X11/xinit/xinitrc.d/*.sh; do
-        [ -x "$f" ] && . "$f"
-    done
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
 fi
 
-if [ -f ~/.Xresources ]; then
-    xrdb -load ~/.Xresources
+if [ -f "$userresources" ]; then
+    xrdb -merge -I$HOME "$userresources"
 fi
 
-if [ -f ~/.Xmodmap ]; then
-    xmodmap ~/.Xmodmap
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
 fi
 
-if [ -f ~/.xprofile ]; then
-    . ~/.xprofile
-fi
-
-gnome-keyring-daemon --start --components=pkcs11 &
-lxpolkit &
-kbdrate -d 400 -r 50
-xset r rate 400 50
-xset s 3600 3600
-
-# start the session
-case $session in
-    i3|i3wm)    exec i3 ;;
-    bsp|bspwm)  exec bspwm ;;
-    awesome)    exec awesome ;;
-    xfce|xfce4) exec startxfce4 ;;
-    openbox|openbox-session) exec openbox-session ;;
-    *) exec "$1"
-esac
+exec i3

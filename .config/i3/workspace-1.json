@@ -1,0 +1,46 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1072,
+       "width": 1136,
+       "x": 1152,
+       "y": 38
+    },
+    "name": "Welcome - Visual Studio Code",
+    "percent": 0.5,
+    "swallows": [
+       {
+       // "title": "^Welcome\\ \\-\\ Visual\\ Studio\\ Code$",
+       // "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1370,
+       "width": 1268,
+       "x": 1284,
+       "y": 35
+    },
+    "name": "Welcome - Code - OSS",
+    "percent": 0.5,
+    "swallows": [
+       {
+       // "class": "^Code\\ \\-\\ OSS$",
+       // "instance": "^code\\ \\-\\ oss$",
+       // "title": "^Welcome\\ \\-\\ Code\\ \\-\\ OSS$",
+       // "transient_for": "^$",
+       // "window_role": "^browser\\-window$"
+       }
+    ],
+    "type": "con"
+}
+
